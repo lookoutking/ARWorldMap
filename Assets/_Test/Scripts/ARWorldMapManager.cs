@@ -17,6 +17,7 @@ public class ARWorldMapManager : MonoBehaviour
     [SerializeField] private Button _buttonAddAnchor;
 
     [SerializeField] private GameObject _prefab;
+    [SerializeField] private GameObject _tempAnchor;
 
     private Pose _hitPose;
     private static List<ARRaycastHit> _hits = new List<ARRaycastHit>();
@@ -27,7 +28,7 @@ public class ARWorldMapManager : MonoBehaviour
         _buttonAddAnchor.onClick.AddListener(() => 
         {
             var anchor = Instantiate<GameObject>(_prefab, _hitPose.position, _hitPose.rotation);
-            Debug.Log(anchor.GetComponent<ARAnchor>().trackableId);
+            _textLog.text += $"Anchor Id: {anchor.GetComponent<ARAnchor>().trackableId}\n";
         });
     }
 
@@ -48,6 +49,7 @@ public class ARWorldMapManager : MonoBehaviour
             // will be the closest hit.
             var hitPose = _hits[0].pose;
             _hitPose = hitPose;
+            _tempAnchor.transform.SetPositionAndRotation(_hitPose.position, _hitPose.rotation);
         }
     }
 
@@ -88,7 +90,7 @@ public class ARWorldMapManager : MonoBehaviour
 
         foreach (var anchor in _anchorManager.trackables)
         {
-            Debug.Log(anchor.trackableId);
+            _textLog.text += $"Anchor Id: {anchor.trackableId}\n";
             var newAnchor = Instantiate<GameObject>(_prefab, anchor.transform);
         }
     }

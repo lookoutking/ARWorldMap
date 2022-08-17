@@ -206,8 +206,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 268973513}
+        m_TargetAssemblyTypeName: UnityEngine.XR.ARFoundation.Samples.ARWorldMapController,
+          Assembly-CSharp
         m_MethodName: OnLoadButton
         m_Mode: 1
         m_Arguments:
@@ -324,6 +325,7 @@ MonoBehaviour:
   _textLog: {fileID: 1544020817}
   _buttonAddAnchor: {fileID: 871288326}
   _prefab: {fileID: 5601722953760363107, guid: dee702ff5f6856b428228e6ea14adf33, type: 3}
+  _tempAnchor: {fileID: 1591721839}
 --- !u!1 &275107516
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,8 +683,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 268973513}
+        m_TargetAssemblyTypeName: UnityEngine.XR.ARFoundation.Samples.ARWorldMapController,
+          Assembly-CSharp
         m_MethodName: OnResetButton
         m_Mode: 1
         m_Arguments:
@@ -1008,7 +1011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1017,10 +1020,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1084,7 +1087,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5c3fcac7a413e4681907dd337b357a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CameraAR: {fileID: 1955458098}
 --- !u!114 &1221971440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1764,7 +1766,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5c3fcac7a413e4681907dd337b357a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CameraAR: {fileID: 1955458098}
 --- !u!114 &1252248557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2418,8 +2419,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 268973513}
+        m_TargetAssemblyTypeName: UnityEngine.XR.ARFoundation.Samples.ARWorldMapController,
+          Assembly-CSharp
         m_MethodName: OnSaveButton
         m_Mode: 1
         m_Arguments:
@@ -2547,6 +2549,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544020815}
   m_CullTransparentMesh: 0
+--- !u!1 &1591721839 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5601722953760363107, guid: dee702ff5f6856b428228e6ea14adf33, type: 3}
+  m_PrefabInstance: {fileID: 1973028102}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1883263239
 GameObject:
   m_ObjectHideFlags: 0
@@ -2975,6 +2982,63 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1001 &1973028102
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5601722953760363107, guid: dee702ff5f6856b428228e6ea14adf33, type: 3}
+      propertyPath: m_Name
+      value: Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601722953760363111, guid: dee702ff5f6856b428228e6ea14adf33, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601722953760363111, guid: dee702ff5f6856b428228e6ea14adf33, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601722953760363111, guid: dee702ff5f6856b428228e6ea14adf33, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601722953760363111, guid: dee702ff5f6856b428228e6ea14adf33, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601722953760363111, guid: dee702ff5f6856b428228e6ea14adf33, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601722953760363111, guid: dee702ff5f6856b428228e6ea14adf33, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601722953760363111, guid: dee702ff5f6856b428228e6ea14adf33, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601722953760363111, guid: dee702ff5f6856b428228e6ea14adf33, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601722953760363111, guid: dee702ff5f6856b428228e6ea14adf33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601722953760363111, guid: dee702ff5f6856b428228e6ea14adf33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601722953760363111, guid: dee702ff5f6856b428228e6ea14adf33, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dee702ff5f6856b428228e6ea14adf33, type: 3}
 --- !u!1 &1991394023
 GameObject:
   m_ObjectHideFlags: 0
