@@ -20,15 +20,18 @@ public class ARWorldMapManager : MonoBehaviour
     [SerializeField] private GameObject _tempAnchor;
 
     private Pose _hitPose;
+    private ARPlane _hitPlane;
     private static List<ARRaycastHit> _hits = new List<ARRaycastHit>();
 
+    [System.Obsolete]
     private void Start()
     {
-        _controller.OnLoadARMap += OnLoadARMap;
+        _controller.OnApplyARMap += OnLoadARMap;
         _buttonAddAnchor.onClick.AddListener(() => 
         {
-            var anchor = Instantiate<GameObject>(_prefab, _hitPose.position, _hitPose.rotation);
-            _textLog.text += $"Anchor Id: {anchor.GetComponent<ARAnchor>().trackableId}\n";
+            var anchor = _anchorManager.AttachAnchor(_hitPlane, _hitPose);
+            var prefab = Instantiate<GameObject>(_prefab, anchor.transform);
+            _textLog.text += $"Anchor Id: {anchor.trackableId}\n";
         });
     }
 
@@ -43,12 +46,13 @@ public class ARWorldMapManager : MonoBehaviour
         if (!TryGetTouchPosition(out Vector2 touchPosition)) return;
 
         // AR Raycast
-        if (_raycastManager.Raycast(touchPosition, _hits, TrackableType.PlaneWithinPolygon | TrackableType.FeaturePoint))
+        if (_raycastManager.Raycast(touchPosition, _hits, TrackableType.PlaneWithinPolygon))
         {
             // Raycast hits are sorted by distance, so the first one
             // will be the closest hit.
             var hitPose = _hits[0].pose;
             _hitPose = hitPose;
+            _hitPlane = (ARPlane)_hits[0].trackable;
             _tempAnchor.transform.SetPositionAndRotation(_hitPose.position, _hitPose.rotation);
         }
     }
@@ -86,8 +90,6 @@ public class ARWorldMapManager : MonoBehaviour
     private void OnLoadARMap()
     {
         _textLog.text += $"# of Anchors: {_anchorManager.trackables.count}";
-        Debug.Log($"# of Anchors: {_anchorManager.trackables.count}");
-
         foreach (var anchor in _anchorManager.trackables)
         {
             _textLog.text += $"Anchor Id: {anchor.trackableId}\n";

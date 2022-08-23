@@ -22,7 +22,10 @@ namespace UnityEngine.XR.ARFoundation.Samples
     /// </remarks>
     public class ARWorldMapController : MonoBehaviour
     {
-        public event System.Action OnLoadARMap;
+        public event System.Action OnApplyARMap;
+        [SerializeField] private ARAnchorManager _anchorManager;
+        [SerializeField] private GameObject _prefab;
+        [SerializeField] private Text _textLog;
         
         [Tooltip("The ARSession component controlling the session from which to generate ARWorldMaps.")]
         [SerializeField]
@@ -156,7 +159,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
             var worldMap = request.GetWorldMap();
             request.Dispose();
-
+            OnSaveMap();
             SaveAndDisposeWorldMap(worldMap);
         }
 
@@ -208,9 +211,10 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 yield break;
             }
 
+            OnLoadARMap();
             Log("Apply ARWorldMap to current session.");
             sessionSubsystem.ApplyWorldMap(worldMap);
-            OnLoadARMap?.Invoke();
+            
         }
 
         void SaveAndDisposeWorldMap(ARWorldMap worldMap)
@@ -317,5 +321,23 @@ namespace UnityEngine.XR.ARFoundation.Samples
         }
 
         List<string> m_LogMessages;
+
+        private void OnLoadARMap()
+        {
+            _textLog.text += $"# of Anchors: {_anchorManager.trackables.count}";
+            foreach (var anchor in _anchorManager.trackables)
+            {
+                _textLog.text += $"Anchor Id: {anchor.trackableId}\n";
+                var newAnchor = Instantiate<GameObject>(_prefab, anchor.transform);
+            }
+        }
+
+        private void OnSaveMap()
+        {
+            foreach (var anchor in _anchorManager.trackables)
+            {
+                _textLog.text += $"Save Anchor Id: {anchor.trackableId}\n";
+            }
+        }
     }
 }
