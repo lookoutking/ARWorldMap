@@ -43,8 +43,8 @@ public class ARWorldMapManager : MonoBehaviour
 
     public void UpdateRaycast()
     {
-        if (!TryGetTouchPosition(out Vector2 touchPosition)) return;
-
+        //if (!TryGetTouchPosition(out Vector2 touchPosition)) return;
+        var touchPosition = new Vector2(Screen.width/2.0f, Screen.height/2.0f);
         // AR Raycast
         if (_raycastManager.Raycast(touchPosition, _hits, TrackableType.PlaneWithinPolygon))
         {
